@@ -1,0 +1,479 @@
+/* Указываем box sizing */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+/* Убираем внутренние отступы */
+ul[class],
+ol[class] {
+    padding: 0;
+}
+
+/* Убираем внешние отступы */
+body,
+h1,
+h2,
+h3,
+h4,
+p,
+ul[class],
+ol[class],
+li,
+figure,
+figcaption,
+blockquote,
+dl,
+dd {
+    margin: 0;
+}
+
+html{
+    font-size: 12px;
+}
+
+/* Выставляем основные настройки по-умолчанию для body */
+body {
+    min-height: 100vh;
+    scroll-behavior: smooth;
+    text-rendering: optimizeSpeed;
+    line-height: 1.5;
+    color: #fff;
+}
+
+/* Удаляем стандартную стилизацию для всех ul и il, у которых есть атрибут class*/
+ul[class],
+ol[class] {
+    list-style: none;
+}
+
+/* Элементы a, у которых нет класса, сбрасываем до дефолтных стилей */
+a:not([class]) {
+    text-decoration-skip-ink: auto;
+}
+
+/* Упрощаем работу с изображениями */
+img {
+    max-width: 100%;
+    display: block;
+}
+
+/* Указываем понятную периодичность в потоке данных у article*/
+article > * + * {
+    margin-top: 1em;
+}
+
+/* Наследуем шрифты для инпутов и кнопок */
+input,
+button,
+textarea,
+select {
+    font: inherit;
+}
+
+/* Удаляем все анимации и переходы для людей, которые предпочитай их не использовать */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+}
+
+/* Header */
+
+header {
+    position: sticky;
+    top: 0;
+    z-index: 20;
+}
+
+.collapse {
+    padding-top: 50px;
+}
+.logo {
+    display: inline-block;
+    width: 70px;
+    height: 70px;
+    float: left;
+}
+.bg_blue {
+    /*margin-top: 50px;*/
+    position: relative;
+    background: #1c1b3a;
+}
+.navbar-brand pre {
+    font-family: sans-serif;
+    white-space: pre-wrap;
+    overflow: auto;
+    width: 12ch;
+    font-size: 1em;
+    line-height: 1em;
+    display: inline-block;
+    margin: .5em;
+    min-height: 4.2em;
+    color: #fff;
+}
+.break {
+    word-break: break-all;
+}
+.cancel {
+    word-break: break-word;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+}
+.to-normal {
+    word-break: normal;
+    word-wrap: normal;
+    overflow-wrap: normal;
+}
+.telephone {
+    position: absolute;
+    right: 25px;
+    top: 30px;
+}
+.navbar-toggler {
+    margin-top: 40px;
+    margin-right: 10px;
+}
+.bg_city {
+    height: 65vh;
+    width: 100%;
+    background-image: url("../image/main-img.jpg");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    position: relative;
+}
+.main-info {
+    position: absolute;
+    top: 50px;
+    left: 80px;
+    background: rgba(0, 0, 0, 0.7);
+    width: 65%;
+    height: auto;
+    padding: 25px;
+    overflow: auto;
+}
+.main-info h1{
+    margin: 20px 0;
+}
+.main-info pre{
+    color: #fff;
+    margin-bottom: 35px;
+    font-size: 1rem;
+    font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
+}
+.btn_connect {
+    font-weight: 400;
+    font-size: 1.2rem;
+    color: white;
+    text-decoration: none;
+    padding: .5em 1.3em calc(.5em + 3px);
+    border-radius: 3px;
+    background: rgba(237, 28, 36, 1);
+    box-shadow: 0 -4px rgb(213, 25, 32) inset;
+    transition: 0.2s;
+    border: none;
+    /*margin-bottom: 30px;*/
+}
+.btn_connect:hover { background: rgb(213, 25, 32); }
+.btn_connect:active {
+    background: rgba(191, 22, 28, 1);
+    box-shadow: 0 3px rgba(191, 22, 28, 1) inset;
+    border: none;
+}
+button:focus, input:focus {
+     outline: none;
+}
+.about-work {
+    background: #1a1a1a;
+    padding: 20px;
+}
+.work-title {
+    font-size: 2.3rem;
+    font-weight: 500;
+}
+.work-directions {
+    border-bottom: 1px solid #aaaaaa;
+    font-size: 1.8rem;
+    color: rgba(255,255,255,.5);
+    margin-top: 20px;
+}
+.work-direction {
+    cursor: pointer;
+}
+.work-direction_active {
+    color: #ffffff;
+    border-bottom: 2px solid #ffffff;
+    /*padding-bottom: 20px;*/
+    font-weight: 500;
+}
+.description {
+    padding: 40px;
+    display: none;
+}
+.description_active {
+    display: flex;
+    animation: show 1s 1; /* Указываем название анимации, её время и количество повторов*/
+    /*animation-fill-mode: forwards; !* Чтобы элемент оставался в конечном состоянии анимации *!*/
+    /*animation-delay: 0.5s; !* Задержка перед началом *!*/
+    transition: all 1s linear;
+}
+@keyframes show{
+    0%{
+        opacity:0;
+    }
+    100% {
+        opacity:1;
+    }
+}
+.picture {
+    background: #fff;
+    margin-right: 30px;
+    padding: 0;
+}
+.about-all-company {
+    background: url("../image/fon.png") no-repeat fixed center;
+    background-size: cover;
+}
+.about-company {
+    padding: 30px;
+    background: rgba(0, 0, 0, 0.6);
+}
+.line {
+    border-top: 2px solid #eeeeee;
+    /*padding: 30px;*/
+}
+.line2 {
+    border-top: 2px solid #ccc;
+}
+.company-title {
+    padding: 25px;
+    font-size: 2rem;
+    font-weight: 500;
+}
+.line-r {
+    border-right: 1px solid #cecece;
+}
+.my-margin {
+    margin: 0 auto 40px;
+}
+.my-margin2 {
+    margin: 0 auto 30px;
+}
+.title-about {
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+.need-call {
+    font-size: 2rem;
+    margin-bottom: 15px;
+}
+.need-call-2 {
+    font-size: 1.6rem;
+}
+.wrap-input {
+    display: inline-block;
+}
+.input {
+    width: 250px;
+    height: 40px;
+    margin: 10px;
+    border-radius: 10px;
+    border: none;
+    padding: 0 15px;
+    font-size: 1.2rem;
+}
+.input:focus {
+    /*font-size: 1.2rem;*/
+}
+.footer {
+    background: #1c1b3a;
+    padding: 15px;
+}
+.logo-foot {
+    width: 100px;
+    height: 100px;
+}
+.navbar-brand .pre-foot {
+    font-size: 1.2em;
+    /*font-weight: 400;*/
+}
+h5 {
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+}
+.my-mr p {
+    margin-bottom: 10px;
+}
+a {
+    color: rgba(255,255,255,.5);
+}
+a:hover, .light:hover {
+    color: rgba(255,255,255,.9);
+}
+a:active, .light:active {
+    color: rgba(255,255,255,1);
+}
+.company-name {
+    background: #424256;
+    padding: 10px;
+}
+.no-line:hover, .no-line:active {
+    text-decoration: none;
+}
+
+
+/*  Preloader  */
+
+#p_prldr {
+    position: fixed;
+    left: 0;
+    top: 0;
+    right:0;
+    bottom:0;
+    background: rgba(15, 16, 18, 1);
+    z-index: 30;
+}
+
+.contpre small{font-size:25px;}
+
+.contpre {
+    width: 300px;
+    height: 300px;
+    position: absolute;
+    left: 50%;top: 15%;
+    margin-left:-150px;
+    /*margin-top:-75px;*/
+    color:#fefefe;
+    font-size:40px;
+    letter-spacing:-2px;
+    text-align:center;
+    line-height:35px;
+}
+
+#p_prldr .svg_anm {
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    background: url(../image/three-dots.svg) center center no-repeat;
+    background-size:50px;
+    margin: -16px 0 0 -26px;
+    padding-right: 30px;
+}
+
+/*  End Preloader  */
+
+/*Medium devices (tablets, less than 992px)*/
+@media (max-width: 992px) {
+    /*.bg_city { height: 55vh; }*/
+    .collapse { padding-top: 0; }
+    .input { width: 230px; }
+    .description { padding: 20px; }
+    .work-directions { font-size: 1.5rem; }
+}
+
+
+/*Small devices (landscape phones, less than 768px)*/
+@media (max-width: 767.98px) {
+    /*header { top: 46px; }*/
+    .description_active { display: block; }
+    .work-title, .work-nav { display: none; }
+    .work-directions { margin-top: 0; border-bottom: none; }
+    .my-btn { width: 50vw; font-size: 1.3rem; }
+    .dropdown-menu { width: 50vw; background: #1c1b3a; color: rgba(255,255,255,.5) }
+    .picture { margin-bottom: 10px; }
+    .company-title { font-size: 1.8rem; }
+    .line-r { border-right: none; }
+    .make-center { text-align: center; width: 100%; }
+    .asd { justify-content: center }
+    .pl-5 { padding: 0 15px!important; }
+    .contpre { width: 250px; height: 250px; margin-left:-125px; }
+}
+
+/*Extra small devices (portrait phones, less than 576px)*/
+@media (max-width: 576px) {
+    .my-mr { width: 50%; margin: 15px auto; }
+    .logo-mr { width: 60%; margin: 0 auto; }
+    .asd { display: block; }
+    .bg_city { height: 65vh; }
+    .contpre {  width: 200px; height: 200px; margin-left:-100px; }
+    .main-info { top: 30px; }
+}
+
+@media (max-width: 470px) {
+    .main-info { position: relative; background: rgba(0, 0, 0, 0.6); width: 100%; height: 100%;
+        top: 0; left: 0; padding-top: 60px;}
+    .bg_city { height: 65vh; }
+}
+
+
+
+@media (min-width: 576px) and (max-width: 767.98px) {
+    .my-mr2 { width: 100%; padding: 0 40%; }
+}
+
+
+@media (min-width: 768px) {
+    .dropdown { display: none; }
+    .container, .container-md, .container-sm { max-width: 100%; }
+}
+
+
+/* WP Style */
+li.current-menu-item a {
+    color: #fff;
+}
+li.menu-item a {
+    padding-right: .5rem;
+    padding-left: .5rem;
+}
+li.menu-item a:hover {
+    text-decoration: none;
+}
+.spam-fil {
+    display: none;
+}
+.alert {
+    font-size: 15px;
+    text-align: center;
+    color: #fff;
+    border-radius: 15px;
+}
+.error {
+    background-color: #CE3D1D;
+}
+.success {
+    background-color: #00CF91;
+}
+.desc-margin p {
+    margin-top: 1rem;
+}
+.fsize {
+    font-size: 15px;
+    margin-bottom: 5px;
+}
+.my-mr3 h4 {
+    margin-bottom: 10px;
+}
+.my-mr3 {
+    margin-bottom: 25px;
+}
+.about-contact {
+    background: #1a1a1a;
+    padding: 40px;
+}
+.mwidth {
+    width: 97.5%;
+    margin: 10px;
+    border-radius: 10px;
+    border: none;
+    padding: 10px 15px;
+    font-size: 1.2rem;
+}
+
+
+
